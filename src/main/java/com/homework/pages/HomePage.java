@@ -1,5 +1,6 @@
 package com.homework.pages;
 
+import com.homework.pages.frames.FramesPage;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -39,5 +40,13 @@ public class HomePage extends BasePage {
     public JavaScriptAlertsPage getJavaScriptAlert() {
         click(javascript_alerts);
         return new JavaScriptAlertsPage(driver);
+    }
+
+    @FindBy(css = "a[href='/frames']")
+    WebElement frames;
+
+    public FramesPage getFrames() {
+        click(frames);
+        return new FramesPage(driver);
     }
 }

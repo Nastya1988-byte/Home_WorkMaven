@@ -13,11 +13,11 @@ public class ElementalSeleniumPage extends BasePage {
 
     @FindBy(xpath = "//img[@alt='Elemental Selenium']")
     WebElement logo;
-
-
+    
     public ElementalSeleniumPage verifyElementalSeleniumPage(String text) {
         switchToNewTab();
-        shouldHaveText(text, 10);
+        WebElement content = null;
+        Assert.assertTrue(shouldHaveText(content, text, 10));
 
         Assert.assertTrue(driver.getTitle().contains(text));
         Assert.assertTrue(logo.isDisplayed());

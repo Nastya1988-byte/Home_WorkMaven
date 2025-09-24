@@ -57,7 +57,7 @@ public class BasePage {
         }
     }
 
-    protected boolean shouldHaveText(String text, int time) {
+    protected boolean shouldHaveText(WebElement content, String text, int time) {
         return new WebDriverWait(driver, Duration.ofSeconds(time))
                 .until(ExpectedConditions.titleContains(text));
     }
