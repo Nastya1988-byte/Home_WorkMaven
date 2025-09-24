@@ -32,4 +32,12 @@ public class HomePage extends BasePage {
         click(basic);
         return new BasicAuthPage(driver);
     }
+
+    @FindBy(css = "a[href='/javascript_alerts']")
+    WebElement javascript_alerts;
+
+    public JavaScriptAlertsPage getJavaScriptAlert() {
+        click(javascript_alerts);
+        return new JavaScriptAlertsPage(driver);
+    }
 }
