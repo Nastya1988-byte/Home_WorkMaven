@@ -49,4 +49,20 @@ public class HomePage extends BasePage {
         click(frames);
         return new FramesPage(driver);
     }
+
+    @FindBy(css = "a[href='/dropdown']")
+    WebElement dropdown;
+
+    public DropdownPage getDropdown() {
+        click(dropdown);
+        return new DropdownPage(driver);
+    }
+
+    @FindBy(css = "a[href='/windows']")
+    WebElement windows;
+
+    public MultipleWindowsPage getMultipleWindows() {
+        click(windows);
+        return new MultipleWindowsPage(driver);
+    }
 }

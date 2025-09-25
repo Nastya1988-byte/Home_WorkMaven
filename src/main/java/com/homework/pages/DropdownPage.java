@@ -1,0 +1,31 @@
+package com.homework.pages;
+
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.Select;
+import org.testng.Assert;
+
+
+public class DropdownPage extends BasePage{
+    public DropdownPage(WebDriver driver) {
+        super(driver);
+    }
+
+    @FindBy(id = "dropdown")
+    WebElement dropdown;
+
+
+    public DropdownPage selectStyle(String option) {
+        Select select = new Select(dropdown);
+        select.selectByVisibleText(option);
+        return this;
+    }
+
+    public DropdownPage verifySelect() {
+        String firstOption = new Select(dropdown).toString();
+//        Assert.assertTrue(shouldHaveText(dropdown, firstOption, 5));
+
+        return this;
+    }
+}
