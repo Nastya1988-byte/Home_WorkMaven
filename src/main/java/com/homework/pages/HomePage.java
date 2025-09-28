@@ -65,4 +65,36 @@ public class HomePage extends BasePage {
         click(windows);
         return new MultipleWindowsPage(driver);
     }
+
+    @FindBy(css = "a[href='/horizontal_slider']")
+    WebElement horizontalSlider;
+
+    public HorisontalSliderPage getHorizontalSlider() {
+        click(horizontalSlider);
+        return new HorisontalSliderPage(driver);
+    }
+
+    @FindBy(css = "a[href='/hovers']")
+    WebElement hovers;
+
+    public HoversPage getHoversPage() {
+        click(hovers);
+        return new HoversPage(driver);
+    }
+
+    @FindBy(css = "a[href='/context_menu']")
+    WebElement contextMenu;
+
+    public ContextMenuPage getContextMenu() {
+        click(contextMenu);
+        return new ContextMenuPage(driver);
+    }
+
+    @FindBy(css = "a[href='/drag_and_drop']")
+    WebElement daragDrop;
+
+    public DragAndDropPage getDragDropPage() {
+        click(daragDrop);
+        return new DragAndDropPage(driver);
+    }
 }

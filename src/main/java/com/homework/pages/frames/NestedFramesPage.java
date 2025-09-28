@@ -9,10 +9,13 @@ import org.testng.Assert;
 
 
 public class NestedFramesPage extends BasePage {
-    private final By body = By.tagName("body");
+    private final
+    By body = By.tagName("body");
+
     public NestedFramesPage(WebDriver driver) {
         super(driver);
     }
+
     private String bodyText() {
         return driver.findElement(body).getText().trim();
     }
@@ -22,6 +25,9 @@ public class NestedFramesPage extends BasePage {
 
     @FindBy(css = "frame[name='frame-top']")
     WebElement top;
+
+    @FindBy(css = "frameset[name='frameset-middle']")
+    WebElement frameset;
 
     @FindBy(css = "frame[name='frame-middle']")
     WebElement middle;
@@ -33,38 +39,31 @@ public class NestedFramesPage extends BasePage {
     WebElement bottom;
 
     public NestedFramesPage returnLeftFrame(String name) {
-        driver.switchTo().defaultContent();
-        driver.switchTo().frame(top);
-        driver.switchTo().frame(left);
-        Assert.assertTrue(bodyText().contains(name));
-        System.out.println(bodyText());
+        moveToFrame(top,left, name);
         return this;
     }
 
-
     public NestedFramesPage returnMiddleFrame(String name) {
-        driver.switchTo().defaultContent();
-        driver.switchTo().frame(top);
-        driver.switchTo().frame(middle);
-        Assert.assertTrue(bodyText().contains(name));
-        System.out.println(bodyText());
+        moveToFrame(top, middle, name);
         return this;
     }
 
     public NestedFramesPage returnRightFrame(String name) {
-        driver.switchTo().defaultContent();
-        driver.switchTo().frame(top);
-        driver.switchTo().frame(right);
-        Assert.assertTrue(bodyText().contains(name));
-        System.out.println(bodyText());
+        moveToFrame(top, right, name);
         return this;
     }
 
     public NestedFramesPage returnBottomFrame(String name) {
-        driver.switchTo().defaultContent();
-        driver.switchTo().frame(bottom);
-        Assert.assertTrue(bodyText().contains(name));
-        System.out.println(bodyText());
+        moveToFrame(null, bottom, name);
         return this;
+    }
+
+    public String moveToFrame(WebElement parentElement, WebElement element, String text) {
+        driver.switchTo().defaultContent();
+        driver.switchTo().frame(parentElement);
+        driver.switchTo().frame(element);
+        Assert.assertTrue(bodyText().contains(text));
+        System.out.println(bodyText());
+        return bodyText();
     }
 }
